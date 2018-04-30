@@ -24,7 +24,7 @@ if sys.version_info > (3,):
 
 setup(
     name='dbug',
-    version='1.0b1',
+    version='1.0b2',
     description='Print tools for debuging',
     long_description=LONG_DESC,
     author='Léo Flaventin Hauchecorne',
@@ -43,6 +43,14 @@ setup(
     install_requires=[],
     extras_require=None,
     entry_points=None,
-    classifiers=[],
+    classifiers=[
+      'Development Status :: 4 - Beta',
+      'Intended Audience :: Developers',
+      'License :: Public Domain',
+      'Programming Language :: Python',
+      'Programming Language :: Python :: 2',
+      'Programming Language :: Python :: 3',
+      'Topic :: Software Development :: Debuggers',
+    ],
     **EXTRAS
 )
