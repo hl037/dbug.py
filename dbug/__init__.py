@@ -1,9 +1,10 @@
 #
 # Copyright 2018 Léo Flaventin Hauchecorne
-# You can do every dman thing you want with this file and its content, except put it
+# You can do every damn thing you want with this file and its content, except put it
 # in a nuclear bomb, except if it is for starting a fusion reaction for reasearch purpose or
-# to do civil energy production.
+# to produce civil energy.
 #
+# Disclaimer : However, I won't waranty any thing happend following the use of this file
 
 import inspect
 import sys

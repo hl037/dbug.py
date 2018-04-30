@@ -30,6 +30,11 @@ setup(
     author='Léo Flaventin Hauchecorne',
     author_email='hl037.prog@gmail.com',
     url='http://leo-flaventin.com',
+    project_urls={
+      'Documentation': 'https://github.com/hl037/dbug.py/blob/master/dbug/__init__.py',
+      'Source': 'https://github.com/hl037/dbug.py',
+      'Tracker': 'https://github.com/hl037/dbug.py/issues',
+    },
     license='Public Domain',
     packages=find_packages(),
     test_suite=None,
