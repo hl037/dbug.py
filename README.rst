@@ -24,6 +24,23 @@ Functions available
 - ``[n]DWAI(**kw)`` : Print *W*-here *A*-m *I* with this format : ``module.function(param=val_param, param2=val_param2...) # /path/to/function/definition:line_of_DWAI_call``
 - ``[n]DNL(**kw)`` : Print a *N*-ew *L*-ine (``i`` and ``indeit_str`` have no effect on this one
 
+Classes Available
+=================
+
+There is also the ``Dbug`` class which takes as parameters ``stream`` and ``indent_str`` and have the normal version of the previous function without the leading D, passing them ``stream`` and defaulting the indent level to ``Dbug.indent_level``
+
+- ``Dbug.__call__(*args, **kw)`` calls ``D``
+- ``Dbug.var(*expr, **kw)`` calls ``Dvar``
+- ``Dbug.var(*expr, **kw)`` calls ``Dvar``
+- ``Dbug.WAI(**kw)`` calls ``DWAI``
+- ``Dbug.NL(**kw)`` calls ``NL``
+
+This class is also a *context manager* so that you can do thinkgs like ::
+
+   with Dbug(open('log', 'w')) as D :
+     D.WAI()
+     D.var('a')
+
 Installation
 ============
 

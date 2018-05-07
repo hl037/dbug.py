@@ -48,7 +48,7 @@ def D(*args, i=0, stream=None, **kwargs):
   if stream is None :
     stream = _Dstream
   Dindent(i, stream)
-  print(*args, file=_Dstream, **kwargs)
+  print(*args, file=stream, **kwargs)
 
 def nD(*args, **kwargs):
   DNL()
@@ -92,4 +92,44 @@ def Dvar(*args, **kwargs):
 def nDvar(*args, **kwargs):
   DNL()
   Dvar(*args, **kwargs)
+
+
+
+
+class Dbug(object):
+  """
+  Class to memorize indentlevel and stream
+  """
+  def __init__(self, stream=sys.stderr, indent_str='  '):
+    self.stream = stream
+    self.indent_str = indent_str
+    self.indent_level = 0
+  
+  def indent(self, i=None, *args, **kwargs):
+    Dindent(i=(i if i is not None else self.indent_level), stream=self.stream, *args, **kwargs)
+
+  def NL(self, *args, **kwargs):
+    DNL(stream=self.stream, *args, **kwargs)
+
+  def __call__(self, *args, i=None, **kwargs):
+    print(self.stream)
+    D(*args, i=(i if i is not None else self.indent_level), stream=self.stream, **kwargs)
+
+  def WAI(self, *, i=None, **kwargs):
+    DWAI(i=(i if i is not None else self.indent_level), stream=self.stream, **kwargs)
+
+  def var(self, *args, i=None, **kwargs):
+    Dvar(*args, i=(i if i is not None else self.indent_level), stream=self.stream, **kwargs)
+
+  def __enter__(self):
+    return self
+
+  def __exit__(self, *args):
+    self.stream.close()
+
+dbug = __import__(__name__)
+
+__all__ = ['dbug', 'getFrameList', 'Dindent', 'DNL', 'D', 'nD', 'getDWAI', 'DWAI', 'nDWAI', 'getDvar1', 'Dvar', 'nDvar', 'Dbug']
+    
+
 
