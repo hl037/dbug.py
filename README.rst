@@ -3,13 +3,13 @@ Introduction
 
 Quick Debug functions to print informations on the context.
 
-Each function has 3 optional keyword-only argumuments :
+Each function has 3 optional keyword-only arguments :
 
 - ``i`` : indent level (defaults to 0)
 - ``indent_str`` : indent string for one level (defaults to 2 spaces)
 - ``stream`` : file-like object to output (defaults to stderr)
 
-These two last parameter are actually defaulted to the modules variables `dbug._Dindent_str` and `dbug._Dstream`.
+These two last parameters are actually defaulted to the module variables `dbug._Dindent_str` and `dbug._Dstream`.
 
 Each functions ``F`` exist in 2 flavours :
 
@@ -27,7 +27,7 @@ Functions available
 Classes Available
 =================
 
-There is also the ``Dbug`` class which takes as parameters ``stream`` and ``indent_str`` and have the normal version of the previous function without the leading D, passing them ``stream`` and defaulting the indent level to ``Dbug.indent_level``
+There is also the ``Dbug`` class which takes as parameters ``stream`` and ``indent_str`` and have the normal version of the previous functions without the leading D, passing them ``stream`` and defaulting the indent level to ``Dbug.indent_level``
 
 - ``Dbug.__call__(*args, **kw)`` calls ``D``
 - ``Dbug.var(*expr, **kw)`` calls ``Dvar``
@@ -35,7 +35,7 @@ There is also the ``Dbug`` class which takes as parameters ``stream`` and ``inde
 - ``Dbug.WAI(**kw)`` calls ``DWAI``
 - ``Dbug.NL(**kw)`` calls ``NL``
 
-This class is also a *context manager* so that you can do thinkgs like ::
+This class is also a *context manager* and you can do things like ::
 
    with Dbug(open('log', 'w')) as D :
      D.WAI()
