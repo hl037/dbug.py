@@ -112,7 +112,6 @@ class Dbug(object):
     DNL(stream=self.stream, *args, **kwargs)
 
   def __call__(self, *args, i=None, **kwargs):
-    print(self.stream)
     D(*args, i=(i if i is not None else self.indent_level), stream=self.stream, **kwargs)
 
   def WAI(self, *, i=None, **kwargs):
