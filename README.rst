@@ -41,6 +41,14 @@ This class is also a *context manager* and you can do things like ::
      D.WAI()
      D.var('a')
 
+As a shortcut to change the indent level for a ``Dbug`` instance object, you can use the shift operator ::
+
+   with Dbug(open('log', 'w')) as D :
+     D.WAI()
+     D>>1  # indent level is now 1
+     D.var('a')
+     D<<1  # indent level is back to 0
+
 Installation
 ============
 

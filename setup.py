@@ -24,7 +24,7 @@ if sys.version_info > (3,):
 
 setup(
     name='dbug',
-    version='1.0b5',
+    version='1.0',
     description='Print tools for debuging',
     long_description=LONG_DESC,
     author='Léo Flaventin Hauchecorne',

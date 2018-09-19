@@ -47,7 +47,7 @@ def D(*args, i=0, stream=None, **kwargs):
   """Print args indented at ith level in stream stream"""
   if stream is None :
     stream = _Dstream
-  Dindent(i, stream)
+  Dindent(i, stream=stream, **kwargs)
   print(*args, file=stream, **kwargs)
 
 def nD(*args, **kwargs):
@@ -100,13 +100,14 @@ class Dbug(object):
   """
   Class to memorize indentlevel and stream
   """
-  def __init__(self, stream=sys.stderr, indent_str='  '):
+  def __init__(self, stream=sys.stderr, indent_str='  ', close_stream=True):
+    self.close_stream = close_stream
     self.stream = stream
     self.indent_str = indent_str
     self.indent_level = 0
   
   def indent(self, i=None, *args, **kwargs):
-    Dindent(i=(i if i is not None else self.indent_level), stream=self.stream, *args, **kwargs)
+    Dindent(i=(i if i is not None else self.indent_level), indent_str=self.indent_str, stream=self.stream, *args, **kwargs)
 
   def NL(self, *args, **kwargs):
     DNL(stream=self.stream, *args, **kwargs)
@@ -124,7 +125,14 @@ class Dbug(object):
     return self
 
   def __exit__(self, *args):
-    self.stream.close()
+    if self.close_stream and self.stream not in (sys.stdout, sys.stderr) :
+      self.stream.close()
+
+  def __lshift__(self, n):
+    self.indent_level = max(self.indent_level - n, 0)
+
+  def __rshift__(self, n):
+    self.indent_level = max(self.indent_level + n, 0)
 
 dbug = __import__(__name__)
 
