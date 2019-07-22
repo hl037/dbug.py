@@ -93,8 +93,21 @@ def nDvar(*args, **kwargs):
   DNL()
   Dvar(*args, **kwargs)
 
+def Dbg(context=7):
+  try :
+    import ipdb
+  except :
+    import pdb
+    pdb.Pdb(skip=['*dbug*'], context=context).set_trace()
+  else:
+    import sys
+    ipdb.set_trace(sys._getframe().f_back, context=context)
 
+def Dnop(res, *args, **kwargs):
+  return res
 
+def DnopL(*args):
+  return args[-1]
 
 class Dbug(object):
   """
@@ -136,7 +149,7 @@ class Dbug(object):
 
 dbug = __import__(__name__)
 
-__all__ = ['dbug', 'getFrameList', 'Dindent', 'DNL', 'D', 'nD', 'getDWAI', 'DWAI', 'nDWAI', 'getDvar1', 'Dvar', 'nDvar', 'Dbug']
+__all__ = ['dbug', 'getFrameList', 'Dindent', 'DNL', 'D', 'nD', 'getDWAI', 'DWAI', 'nDWAI', 'getDvar1', 'Dvar', 'nDvar', 'Dbug', 'Dbg', 'Dnop', 'DnopL']
     
 
 

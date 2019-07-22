@@ -19,12 +19,9 @@ LONG_DESC = read_file('README.rst') + '\n\n' + read_file('HISTORY.rst')
 
 EXTRAS = {}
 
-if sys.version_info > (3,):
-    EXTRAS['use_2to3'] = True
-
 setup(
     name='dbug',
-    version='1.0',
+    version='1.2',
     description='Print tools for debuging',
     long_description=LONG_DESC,
     author='Léo Flaventin Hauchecorne',

@@ -23,6 +23,8 @@ Functions available
 - ``[n]Dvar(*expr, **kw)`` : Print for each expression ``expr`` : ``f'{expr} = {eval(expr)}\n'``
 - ``[n]DWAI(**kw)`` : Print *W*-here *A*-m *I* with this format : ``module.function(param=val_param, param2=val_param2...) # /path/to/function/definition:line_of_DWAI_call``
 - ``[n]DNL(**kw)`` : Print a *N*-ew *L*-ine (``i`` and ``indeit_str`` have no effect on this one
+- ``Dnop(res, *args)`` : Returns ``res``, so that one can execute any side effect function in a list comprehension (best used with ``Dvar()``)
+- ``DnopL(*args, res)`` : Same as ``Dnop`` but execute the side effects first
 
 Classes Available
 =================
